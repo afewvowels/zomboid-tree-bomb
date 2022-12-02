@@ -1,0 +1,44 @@
+module TB
+{
+    imports
+    {
+        Base
+    }
+
+    item TreeBomb
+    {
+        Weight = 0.5,
+        Type = Normal,
+        DisplayName = Tree Bomb,
+        Icon = TreeBomb,
+    }
+
+    item TreeBombMagazine
+    {
+        DisplayCategory = SkillBook,
+        Weight = 0.1,
+        Type = Literature,
+        DisplayName = Your Dream Treeless World Today,
+        Icon = TreeBombMagazine,
+        TeachedRecipes = Make Tree Bomb,
+        ReplaceOnUse = TreeBombMagazine,
+        StaticModel = Magazine,
+        WorldStaticModel = MagazineElec1Ground,
+    }
+
+    recipe Make Tree Bomb
+    {
+        ScrapMetal=5,
+        ElectricWire=3,
+        GunPowder=5,
+        keep [Recipe.GetItemTypes.Hammer],
+        NoBrokenItems:true,
+        NeedToBeLearn:true,
+        Result:TreeBomb,
+        Time:100.0,
+        OnCreate:Recipe.OnCreate.OpenCandyPackage,
+        OnGiveXP:Recipe.OnGiveXP.DismantleRadio,
+        Category:Electrical,
+        SkillRequired:Strength=1,
+    }
+}
